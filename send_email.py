@@ -9,10 +9,6 @@ import re
 import csv
 
 from pip import main
-#BODY: name, BODY: company, BODY: typeofplan (advanced esoc/eiu)
-#SUBJECT typeofplan (advanced esoc/eiu), SUBJECT: name
-#ATTACHMENT typeofplan-name.pdf
-#receiver_email
 
 
 def send_email(subjectname, company, typeofplan, receiver_email):
@@ -66,7 +62,7 @@ def send_email(subjectname, company, typeofplan, receiver_email):
 
     # Log in to server using secure context and send email
     context = ssl.create_default_context()
-    with smtplib.SMTP_SSL("smtp.larksuite.com", 465, context=context) as server:
+    with smtplib.SMTP_SSL("gmail.com", 465, context=context) as server:
         #server.set_debuglevel(1)
         #server.ehlo()
         server.login(sender_email, password)
@@ -75,7 +71,7 @@ def send_email(subjectname, company, typeofplan, receiver_email):
 
 
 if __name__ == '__main__':
-    file = open('sample ESOP.csv')
+    file = open('sample.csv')
     csvreader = csv.reader(file)
     header = []
     header = next(csvreader)
